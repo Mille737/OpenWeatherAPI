@@ -40,6 +40,7 @@ public class WeatherService {
     WindRepo windRepo;
 
     private static final Logger log = LoggerFactory.getLogger(WeatherrestapiApplication.class);
+    private RestTemplate restTemplate;
 
     public List<Weather> displayWeather() {
         return weatherRepo.findAll();
@@ -52,25 +53,37 @@ public class WeatherService {
         return mainRepo.findAll();
     }
 
-    RestTemplate restTemplate;
-
+    //RestTemplate restTemplate;
+/*
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
 
-    public void insert(Weather weather){
-        weather = restTemplate.getForObject(
-                "http://api.openweathermap.org/data/2.5/weather?q=copenhagen&appid=bdf870f0163fa263f682e20eb10c8a5a", Weather.class);
-        log.info(weather.toString());
+ */
 
-        weatherRepo.save(weather);
+    public void insert(Coord coord, Clouds clouds, Main main, Sys sys, List<WeatherList> weatherList, Wind wind, Weather weather) throws Exception {
+        WeatherrestapiApplication weatherrestapiApplication = new WeatherrestapiApplication();
+        weather.setBase(weatherrestapiApplication.testbase);
+        System.out.println(weather.getBase());
+
+       weatherrestapiApplication.run(restTemplate);
+       log.info(weather.toString());
+
+        /*weather = restTemplate.getForObject(
+                "http://api.openweathermap.org/data/2.5/weather?q=copenhagen&appid=bdf870f0163fa263f682e20eb10c8a5a", Weather.class);
+        log.info(weather.toString());*/
+
         coordRepo.save(weather.getCoord());
         cloudsRepo.save(weather.getClouds());
         mainRepo.save(weather.getMain());
         sysRepo.save(weather.getSys());
         weatherListRepo.saveAll(weather.getWeatherList());
         windRepo.save(weather.getWind());
+        weatherRepo.save(weather);
+
+
+
 
     }
 

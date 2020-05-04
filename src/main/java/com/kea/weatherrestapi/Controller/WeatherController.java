@@ -3,14 +3,14 @@ package com.kea.weatherrestapi.Controller;
 import com.kea.weatherrestapi.Model.Weather;
 import com.kea.weatherrestapi.Service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-@org.springframework.stereotype.Controller
-public class Controller {
+@Controller
+public class WeatherController {
 
     @Autowired
     WeatherService weatherService;
@@ -25,10 +25,11 @@ public class Controller {
     }
 
 
-
     @PostMapping("/index")
-    public String saveData(@ModelAttribute Weather weather){
-        weatherService.insert(weather.getClouds(), weather.getCoord(), weather.getMain(),weather.getSys(),weather.getWeatherList());
+    public String saveData(@ModelAttribute Weather weather) throws Exception {
+        weatherService.insert(weather.getCoord(), weather.getClouds(), weather.getMain(),weather.getSys(), weather.getWeatherList(), weather.getWind(), weather);
         return "/index22";
     }
+
+
 }

@@ -22,27 +22,34 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherrestapiApplication {
 
     private static final Logger log = LoggerFactory.getLogger(WeatherrestapiApplication.class);
+    public String testbase;
 
     public static void main(String[] args) {
-        SpringApplication.run(WeatherrestapiApplication.class, args);}
-/*
-        @Bean
-        public RestTemplate restTemplate(RestTemplateBuilder builder) {
-            return builder.build();
-        }
-
-        @Bean
-        public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-            return args -> {
-                Weather weather = restTemplate.getForObject(
-                       "http://api.openweathermap.org/data/2.5/weather?q=copenhagen&appid=ad2be13e7160fd63bc460a481dde7b83", Weather.class);
-                log.info(weather.toString());
+        SpringApplication.run(WeatherrestapiApplication.class, args);
+    }
 
 
-               // WeatherService weatherService = new WeatherService();
-              // weatherService.insert(weather);
-            };*/
-        }
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
 
+    @Bean
+    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+        return args -> {
+            Weather weather = restTemplate.getForObject(
+                    "http://api.openweathermap.org/data/2.5/weather?q=copenhagen&appid=ad2be13e7160fd63bc460a481dde7b83", Weather.class);
+            log.info(weather.toString());
+
+
+
+
+            // WeatherService weatherService = new WeatherService();
+            // weatherService.insert(weather);
+        };
+
+    }
+
+}
 
 
