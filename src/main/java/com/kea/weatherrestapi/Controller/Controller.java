@@ -17,6 +17,7 @@ public class Controller {
     public String index(Model model) {
         model.addAttribute("weatherList", weatherService.displayWeather());
         model.addAttribute("coordList", weatherService.displayCoord());
+        model.addAttribute("mainList", weatherService.displayMain());
         return "index";
     }
 

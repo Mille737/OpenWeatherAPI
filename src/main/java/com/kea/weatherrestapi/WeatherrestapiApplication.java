@@ -39,8 +39,8 @@ public class WeatherrestapiApplication {
                 log.info(weather.toString());
 
 
-                //WeatherService weatherService = new WeatherService();
-               // weatherService.insert(weather);
+               // WeatherService weatherService = new WeatherService();
+              // weatherService.insert(weather);
             };
         }
 

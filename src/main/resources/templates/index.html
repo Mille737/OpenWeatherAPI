@@ -20,16 +20,19 @@
 
                 <tr>
             <div th:each="weather:${weatherList}">
-                    <td th:text="${weather.visibility}">Clouds</td>
                     <td th:text="${weather.timezone}">Timezone</td>
-                    <td th:text="${weather.name}">Humidity</td>
-                    <td th:text="${weather.dt}">Sunrise</td>
-                    <td th:text="${weather.cod}">Sunset</td>
+                    <td th:text="${weather.dateTime}">Datetime</td>
+                    <td th:text="${weather.name}">Navn</td>
+
             </div>
             <div th:each="coord:${coordList}">
                 <td th:text="${coord.lon}">Lon</td>
                 <td th:text="${coord.lat}">Lat</td>
             </div>
+                    <div th:each="main:${mainList}">
+                        <td th:text="${main.temp}">temp</td>
+                        <td th:text="${main.humidity}">Lat</td>
+                    </div>
                 </tr>
 
 
