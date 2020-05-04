@@ -6,12 +6,13 @@ package com.kea.weatherrestapi.Model;
 //import javax.persistence.Table;
 import javax.persistence.*;
 import java.io.Serializable;
-        import java.util.List;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Entity
 @Table(name = "weather")
-public class Weather implements Serializable {
+public class Weather implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,6 +45,9 @@ public class Weather implements Serializable {
     private Integer timezone;
     private String name;
     private Integer cod;
+
+
+    private LocalDateTime dateTime = LocalDateTime.now();
 
 
     public Weather() {
@@ -159,7 +163,13 @@ public class Weather implements Serializable {
     public void setCod(Integer cod) {
         this.cod = cod;
     }
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
 
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 
     @Override
     public String toString() {
@@ -175,6 +185,7 @@ public class Weather implements Serializable {
                 ", timezone=" + timezone +
                 ", name='" + name + '\'' +
                 ", cod=" + cod +
+                ", datetime=" + dateTime +
                 '}';
     }
 }

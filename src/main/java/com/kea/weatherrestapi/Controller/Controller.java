@@ -12,11 +12,14 @@ public class Controller {
     @Autowired
     WeatherService weatherService;
 
+
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("weatherList", weatherService.display());
+        model.addAttribute("weatherList", weatherService.displayWeather());
+        model.addAttribute("coordList", weatherService.displayCoord());
         return "index";
     }
+
 }
 /*
     @PostMapping("/index")
