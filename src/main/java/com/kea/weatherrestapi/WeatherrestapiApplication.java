@@ -3,6 +3,7 @@ package com.kea.weatherrestapi;
 import com.kea.weatherrestapi.Model.Weather;
 //import Model.WeatherOld;
 //import Service.WeatherService;
+import com.kea.weatherrestapi.Service.WeatherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -39,7 +40,7 @@ public class WeatherrestapiApplication {
 
 
                 //WeatherService weatherService = new WeatherService();
-                //weatherService.insert(weather);
+               // weatherService.insert(weather);
             };
         }
 

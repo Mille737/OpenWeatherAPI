@@ -21,6 +21,7 @@ public class Sys implements Serializable {
     @OneToOne(mappedBy = "sys")
     private Weather weather;
 
+
     public Integer getType() {
         return type;
     }
@@ -59,6 +60,14 @@ public class Sys implements Serializable {
 
     public void setSunset(Integer sunset) {
         this.sunset = sunset;
+    }
+
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
     }
 
     @Override

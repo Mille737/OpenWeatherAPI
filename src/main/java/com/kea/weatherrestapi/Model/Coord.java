@@ -43,6 +43,13 @@ public class Coord implements Serializable {
         this.lat = lat;
     }
 
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
+    }
 
     @Override
     public String toString() {

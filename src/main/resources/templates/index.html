@@ -18,13 +18,13 @@
         <div th:each="weather:${weatherList}">
             <tbody>
                 <tr>
+                    <td th:text="${weather.id}">Date</td>
                     <td th:text="${weather.temp}">Temp</td>
-                    <td th:text="${weather.clouds}">Clouds</td>
-                    <td th:text="${weather.pressure}">Pressure</td>
-                    <td th:text="${weather.humidity}">Humidity</td>
-                    <td th:text="${weather.sunrise}">Sunrise</td>
-                    <td th:text="${weather.sunset}">Sunset</td>
-                    <td th:text="${weather.time}">Date</td>
+                    <td th:text="${weather.feelsLike}">Clouds</td>
+                    <td th:text="${weather.tempMin}">Pressure</td>
+                    <td th:text="${weather.tempMax}">Humidity</td>
+                    <td th:text="${weather.pressure}">Sunrise</td>
+                    <td th:text="${weather.humidity}">Sunset</td>
                 </tr>
             </tbody>
         </div>

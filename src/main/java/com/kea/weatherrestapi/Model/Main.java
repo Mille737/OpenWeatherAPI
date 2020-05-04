@@ -79,6 +79,13 @@ public class Main implements Serializable {
         this.humidity = humidity;
     }
 
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
+    }
 
     @Override
     public String toString() {

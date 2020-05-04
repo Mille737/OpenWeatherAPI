@@ -1,4 +1,4 @@
-
+/*
 package com.kea.weatherrestapi.Model;
 
 import javax.persistence.*;
@@ -12,6 +12,7 @@ public class Clouds implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+
     private int all;
 
     @OneToOne(mappedBy = "clouds")
@@ -41,3 +42,4 @@ public class Clouds implements Serializable {
                 '}';
     }
 }
+*/

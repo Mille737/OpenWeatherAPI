@@ -1,10 +1,7 @@
 
 package com.kea.weatherrestapi.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -12,6 +9,8 @@ import java.io.Serializable;
 public class Wind implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
     private Double speed;
     private Integer deg;
@@ -43,6 +42,13 @@ public class Wind implements Serializable {
         this.deg = deg;
     }
 
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
+    }
 
     @Override
     public String toString() {

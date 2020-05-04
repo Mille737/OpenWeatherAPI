@@ -1,4 +1,4 @@
-/*package com.kea.weatherrestapi.Controller;
+package com.kea.weatherrestapi.Controller;
 
 import com.kea.weatherrestapi.Service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ public class Controller {
         return "index";
     }
 }
+/*
     @PostMapping("/index")
     public String saveData(@ModelAttribute Weather weather){
         weatherService.insert(weather);

@@ -31,12 +31,13 @@ public class Weather implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Wind_id", referencedColumnName = "id")
     private Wind wind;
-
+ /*
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "clouds_id", referencedColumnName = "id")
     private Clouds clouds;
-    private Integer dt;
 
+  */
+    private Integer dt;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sys_id", referencedColumnName = "id")
     private Sys sys;
@@ -48,13 +49,13 @@ public class Weather implements Serializable {
     public Weather() {
     }
 
-    public Weather(Coord coord, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod, Map<String, Object> additionalProperties) {
+    public Weather(Coord coord, String base, Main main, Integer visibility, Wind wind/*, Clouds clouds*/, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod, Map<String, Object> additionalProperties) {
         this.coord = coord;
         this.base = base;
         this.main = main;
         this.visibility = visibility;
         this.wind = wind;
-        this.clouds = clouds;
+        //this.clouds = clouds;
         this.dt = dt;
         this.sys = sys;
         this.timezone = timezone;
@@ -102,7 +103,7 @@ public class Weather implements Serializable {
     public void setWind(Wind wind) {
         this.wind = wind;
     }
-
+/*
     public Clouds getClouds() {
         return clouds;
     }
@@ -110,7 +111,7 @@ public class Weather implements Serializable {
     public void setClouds(Clouds clouds) {
         this.clouds = clouds;
     }
-
+*/
     public Integer getDt() {
         return dt;
     }
@@ -168,7 +169,7 @@ public class Weather implements Serializable {
                 ", main=" + main +
                 ", visibility=" + visibility +
                 ", wind=" + wind +
-                ", clouds=" + clouds +
+                //", clouds=" + clouds +
                 ", dt=" + dt +
                 ", sys=" + sys +
                 ", timezone=" + timezone +
