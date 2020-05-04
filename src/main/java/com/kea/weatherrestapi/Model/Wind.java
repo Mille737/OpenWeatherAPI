@@ -1,13 +1,12 @@
 
-package Model;
+package com.kea.weatherrestapi.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+
 @Entity
 @Table(name = "wind")
 public class Wind implements Serializable {

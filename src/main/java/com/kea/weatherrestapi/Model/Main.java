@@ -1,10 +1,9 @@
 
-package Model;
+package com.kea.weatherrestapi.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+
 @Entity
 @Table(name = "main")
 public class Main implements Serializable {

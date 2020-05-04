@@ -1,5 +1,5 @@
 
-package Model;
+package com.kea.weatherrestapi.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;

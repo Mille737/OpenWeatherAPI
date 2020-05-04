@@ -3,52 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather</title>
-    <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{~/index.css}">
 </head>
+
 <body>
+<h1>Weather Application</h1>
 
-<div class="container">
-    <img alt="Snow" src="../static/img/weathr.png" style="width:100%;" th:src="@{/img/weathr.png}">
-
-        <div class="centered">
-            <input class="form-control" name="Search" placeholder="Search City" type="text">
-            <button class="btn btn-primary" type="submit">Search</button>
-            <table class="table">
+<div class="hero-main">
+    <table class="table">
+        <div th:each="weather:${weatherList}">
+            <tbody>
                 <tr>
-                    <th>Temperature:</th>
-                    <th> 13 Degrees</th>
+                    <td th:text="${weather.temp}">Temp</td>
+                    <td th:text="${weather.clouds}">Clouds</td>
+                    <td th:text="${weather.pressure}">Pressure</td>
+                    <td th:text="${weather.humidity}">Humidity</td>
+                    <td th:text="${weather.sunrise}">Sunrise</td>
+                    <td th:text="${weather.sunset}">Sunset</td>
+                    <td th:text="${weather.time}">Date</td>
                 </tr>
-                <tr>
-                    <th>Weather:</th>
-                    <th>Cloudy</th>
-                </tr>
-                <tr>
-                    <th>Pressure:</th>
-                    <th>850 hpa</th>
-                </tr>
-                <tr>
-                    <th>Humidity:</th>
-                    <th>65%</th>
-                </tr>
-                <tr>
-                    <th>Sunrise:</th>
-                    <th>06:47</th>
-                </tr>
-                <tr>
-                    <th>Sunset:</th>
-                    <th>19:45</th>
-                </tr>
-            </table>
-            <!-- JavaScript til Bootstrap: jQuery first, then Popper.js, then Bootstrap JS -->
-            <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-            <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-            <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            </tbody>
         </div>
+    </table>
+    <img src="../static/img/weathr.png" th:src="@{/img/weathr.png}" class="weatherImage"/>
 </div>
+
+<!-- JavaScript til Bootstrap: jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>

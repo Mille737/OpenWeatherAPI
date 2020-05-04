@@ -1,6 +1,6 @@
-package Repo;
+/*package com.kea.weatherrestapi.Repo;
 
-import Model.WeatherOld;
+import com.kea.weatherrestapi.Model.WeatherOld;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,3 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface WeatherRepo extends JpaRepository<WeatherOld, Integer> {
 
 }
+*/

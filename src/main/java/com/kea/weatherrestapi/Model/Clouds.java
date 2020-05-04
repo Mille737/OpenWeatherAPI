@@ -1,31 +1,37 @@
 
-package Model;
+package com.kea.weatherrestapi.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+
 @Entity
-@Table(name = "clouds")
+@Table(name = "Clouds")
 public class Clouds implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-    private Integer all;
+    private int all;
 
     @OneToOne(mappedBy = "clouds")
     private Weather weather;
 
-    public Integer getAll() {
+    public int getAll() {
         return all;
     }
 
-    public void setAll(Integer all) {
+    public void setAll(int all) {
         this.all = all;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {

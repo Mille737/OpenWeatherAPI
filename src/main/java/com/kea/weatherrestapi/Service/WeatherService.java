@@ -1,7 +1,8 @@
-package Service;
+/*
+package com.kea.weatherrestapi.Service;
 
-import Model.WeatherOld;
-import Repo.WeatherRepo;
+import com.kea.weatherrestapi.Model.WeatherOld;
+import com.kea.weatherrestapi.Repo.WeatherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,10 @@ public class WeatherService {
         return weatherRepo.findAll();
     }
 }
-/*
+
     public void insert(WeatherOld weather){
         weatherRepo.save(weather);
     }
 
-}*/
+}
+*/

@@ -1,19 +1,16 @@
 
-package Model;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.kea.weatherrestapi.Model;
 
 //import javax.persistence.Entity;
 //import javax.persistence.Id;
 //import javax.persistence.Table;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
+        import java.util.List;
 import java.util.Map;
 
 @Entity
-@Table(name = "weathermain")
+@Table(name = "weather")
 public class Weather implements Serializable {
 
     @Id
@@ -23,10 +20,6 @@ public class Weather implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Coord_id", referencedColumnName = "id")
     private Coord coord;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Weather__id", referencedColumnName = "id")
-    private List<Weather_> weather = null;
 
     private String base;
 
@@ -55,9 +48,8 @@ public class Weather implements Serializable {
     public Weather() {
     }
 
-    public Weather(Coord coord, List<Weather_> weather, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod, Map<String, Object> additionalProperties) {
+    public Weather(Coord coord, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod, Map<String, Object> additionalProperties) {
         this.coord = coord;
-        this.weather = weather;
         this.base = base;
         this.main = main;
         this.visibility = visibility;
@@ -77,14 +69,6 @@ public class Weather implements Serializable {
 
     public void setCoord(Coord coord) {
         this.coord = coord;
-    }
-
-    public List<Weather_> getWeather() {
-        return weather;
-    }
-
-    public void setWeather(List<Weather_> weather) {
-        this.weather = weather;
     }
 
     public String getBase() {
@@ -180,7 +164,6 @@ public class Weather implements Serializable {
     public String toString() {
         return "Weather{" +
                 "coord=" + coord +
-                ", weather=" + weather +
                 ", base='" + base + '\'' +
                 ", main=" + main +
                 ", visibility=" + visibility +
