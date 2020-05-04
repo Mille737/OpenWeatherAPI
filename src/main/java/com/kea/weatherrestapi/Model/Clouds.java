@@ -1,5 +1,6 @@
-/*
 package com.kea.weatherrestapi.Model;
+
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,18 +14,20 @@ public class Clouds implements Serializable {
     @Column(name = "id")
     private int id;
 
-    private int all;
+    @Nullable
+    private Integer all;
+
+    public Integer getAll() {
+        return all;
+    }
+
+    public void setAll(Integer all) {
+        this.all = all;
+    }
 
     @OneToOne(mappedBy = "clouds")
     private Weather weather;
 
-    public int getAll() {
-        return all;
-    }
-
-    public void setAll(int all) {
-        this.all = all;
-    }
 
     public int getId() {
         return id;
@@ -34,12 +37,19 @@ public class Clouds implements Serializable {
         this.id = id;
     }
 
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
+    }
+
     @Override
     public String toString() {
         return "Clouds{" +
-                "all=" + all +
-                ", weather=" + weather +
+                "id=" + id +
+                ", all=" + all +
                 '}';
     }
 }
-*/

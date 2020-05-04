@@ -1,14 +1,17 @@
 
 package com.kea.weatherrestapi.Service;
 
-import com.kea.weatherrestapi.Model.Coord;
-import com.kea.weatherrestapi.Model.Main;
-import com.kea.weatherrestapi.Model.Weather;
-import com.kea.weatherrestapi.Repo.CoordRepo;
-import com.kea.weatherrestapi.Repo.MainRepo;
-import com.kea.weatherrestapi.Repo.WeatherRepo;
+import com.kea.weatherrestapi.Model.*;
+import com.kea.weatherrestapi.Repo.*;
+import com.kea.weatherrestapi.WeatherrestapiApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 
 import java.util.List;
 
@@ -24,6 +27,20 @@ public class WeatherService {
     @Autowired
     MainRepo mainRepo;
 
+    @Autowired
+    CloudsRepo cloudsRepo;
+
+    @Autowired
+    SysRepo sysRepo;
+
+    @Autowired
+    WeatherListRepo weatherListRepo;
+
+    @Autowired
+    WindRepo windRepo;
+
+    private static final Logger log = LoggerFactory.getLogger(WeatherrestapiApplication.class);
+
     public List<Weather> displayWeather() {
         return weatherRepo.findAll();
     }
@@ -35,10 +52,26 @@ public class WeatherService {
         return mainRepo.findAll();
     }
 
-/*
+    RestTemplate restTemplate;
+
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
 
     public void insert(Weather weather){
+        weather = restTemplate.getForObject(
+                "http://api.openweathermap.org/data/2.5/weather?q=copenhagen&appid=bdf870f0163fa263f682e20eb10c8a5a", Weather.class);
+        log.info(weather.toString());
+
         weatherRepo.save(weather);
+        coordRepo.save(weather.getCoord());
+        cloudsRepo.save(weather.getClouds());
+        mainRepo.save(weather.getMain());
+        sysRepo.save(weather.getSys());
+        weatherListRepo.saveAll(weather.getWeatherList());
+        windRepo.save(weather.getWind());
+
     }
-*/
+
 }

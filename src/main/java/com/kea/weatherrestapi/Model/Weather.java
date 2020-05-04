@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "weather")
@@ -32,12 +31,12 @@ public class Weather implements Serializable  {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Wind_id", referencedColumnName = "id")
     private Wind wind;
- /*
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "clouds_id", referencedColumnName = "id")
     private Clouds clouds;
 
-  */
+
     private Integer dt;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sys_id", referencedColumnName = "id")
@@ -46,6 +45,10 @@ public class Weather implements Serializable  {
     private String name;
     private Integer cod;
 
+    @OneToMany(mappedBy = "weather", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   // @JoinColumn(name = "weatherList_id", referencedColumnName = "id")
+    private List<WeatherList> weatherList;
+
 
     private LocalDateTime dateTime = LocalDateTime.now();
 
@@ -53,19 +56,20 @@ public class Weather implements Serializable  {
     public Weather() {
     }
 
-    public Weather(Coord coord, String base, Main main, Integer visibility, Wind wind/*, Clouds clouds*/, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod, Map<String, Object> additionalProperties) {
+    public Weather(Coord coord, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod, List<WeatherList> weatherList) {
         this.coord = coord;
         this.base = base;
         this.main = main;
         this.visibility = visibility;
         this.wind = wind;
-        //this.clouds = clouds;
+        this.clouds = clouds;
         this.dt = dt;
         this.sys = sys;
         this.timezone = timezone;
         this.id = id;
         this.name = name;
         this.cod = cod;
+        this.weatherList = weatherList;
     }
 
     public Coord getCoord() {
@@ -107,7 +111,7 @@ public class Weather implements Serializable  {
     public void setWind(Wind wind) {
         this.wind = wind;
     }
-/*
+
     public Clouds getClouds() {
         return clouds;
     }
@@ -115,7 +119,7 @@ public class Weather implements Serializable  {
     public void setClouds(Clouds clouds) {
         this.clouds = clouds;
     }
-*/
+
     public Integer getDt() {
         return dt;
     }
@@ -171,6 +175,14 @@ public class Weather implements Serializable  {
         this.dateTime = dateTime;
     }
 
+    public List<WeatherList> getWeatherList() {
+        return weatherList;
+    }
+
+    public void setWeatherList(List<WeatherList> weatherList) {
+        this.weatherList = weatherList;
+    }
+
     @Override
     public String toString() {
         return "Weather{" +
@@ -179,12 +191,13 @@ public class Weather implements Serializable  {
                 ", main=" + main +
                 ", visibility=" + visibility +
                 ", wind=" + wind +
-                //", clouds=" + clouds +
+                ", clouds=" + clouds +
                 ", dt=" + dt +
                 ", sys=" + sys +
                 ", timezone=" + timezone +
                 ", name='" + name + '\'' +
                 ", cod=" + cod +
+                ", weather_" + weatherList +
                 ", datetime=" + dateTime +
                 '}';
     }
