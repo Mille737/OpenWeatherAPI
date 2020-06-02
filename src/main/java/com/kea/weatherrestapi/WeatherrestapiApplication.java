@@ -22,14 +22,13 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherrestapiApplication {
 
     private static final Logger log = LoggerFactory.getLogger(WeatherrestapiApplication.class);
-    public String testbase;
 
     public static void main(String[] args) {
         SpringApplication.run(WeatherrestapiApplication.class, args);
     }
 
 
-    @Bean
+   /* @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
@@ -48,7 +47,7 @@ public class WeatherrestapiApplication {
             // weatherService.insert(weather);
         };
 
-    }
+    }*/
 
 }
 
